@@ -1,20 +1,21 @@
 import axios from "axios";
-import { Card } from "@/components/Card/Card";
-import { CryptoInfoCard } from "@/components/CryptoInfoCard/CryptoInfoCard";
-import { CryptoNotFoundCard } from "@/components/CryptoNotFoundCard/CryptoNotFoundCard";
+import {Card} from "@/components/Card/Card";
+import {CryptoInfoCard} from "@/components/CryptoInfoCard/CryptoInfoCard";
+import {CryptoNotFoundCard} from "@/components/CryptoNotFoundCard/CryptoNotFoundCard";
+import {CoinData} from "@/components/CryptoInfoCard/types";
 
 // serverside function for fetching data
-const getCoinData = async (id: string) => {
+const getCoinData = async (id: string): Promise<CoinData | null> => {
     try {
         const res = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
-        return res.data;
+        return res.data as CoinData;
     } catch (error) {
-        console.error('Error fetching data from the backend:', error);
+        console.error("Error fetching data from the backend:", error);
         return null; // if there is an error
     }
 };
 
-const CoinPage = async ({ params }: { params: { id: string } }) => {
+const CoinPage = async ({params}: { params: { id: string } }) => {
     // taking data from Api
     const coinData = await getCoinData(params.id);
 
@@ -33,7 +34,7 @@ const CoinPage = async ({ params }: { params: { id: string } }) => {
     return (
         <div className="grid place-items-center h-screen">
             <Card title={coinData.name} width={604}>
-                <CryptoInfoCard coinData={coinData} />
+                <CryptoInfoCard coinData={coinData}/>
             </Card>
         </div>
     );

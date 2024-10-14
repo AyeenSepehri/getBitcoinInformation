@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
+import { CoinData } from "./types";
 
 interface CryptoInfoCardProps {
-    coinData: any;
+    coinData: CoinData;
 }
 
 export const CryptoInfoCard: React.FC<CryptoInfoCardProps> = ({ coinData }) => {
-console.log(coinData.market_data.current_price.usd)
-    return(
+    return (
         <div className="flex flex-col justify-center items-center gap-6">
             <Image src={coinData.image.large} alt={"coin logo"} width={104} height={104}/>
             <div className="w-full flex flex-col gap-4">
@@ -29,5 +29,5 @@ console.log(coinData.market_data.current_price.usd)
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

@@ -7,10 +7,9 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({width , title , children}) => {
-    console.log(width)
     return(
         <div
-            className="bg-white shadow-lg p-10 flex flex-col gap-8 rounded-3xl"
+            className="bg-white shadow-md p-10 flex flex-col gap-8 rounded-3xl"
             style={{ width: `${width}px` }}
         >
             <div className="border-b border-b-gray-400 pb-4">
