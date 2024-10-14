@@ -49,13 +49,13 @@ export const CryptoInfoCard: React.FC<CryptoInfoCardProps> = ({ coinData }) => {
                 </div>
                 <div className="flex justify-between items-center">
                     <span className="font-normal">Price:</span>
-                    <span className="font-medium">${coinData.market_data.current_price.usd}</span>
+                    <span className="font-medium">{coinData.market_data.current_price.usd.toLocaleString()}$</span>
                 </div>
                 <div className="flex justify-between items-center flex-wrap gap-3">
                     <span className="font-normal">Description:</span>
-                    <span className="font-medium">
+                    <p className="font-medium">
                         {parseDescription(coinData.description.en)}
-                    </span>
+                    </p>
                 </div>
             </div>
         </div>
